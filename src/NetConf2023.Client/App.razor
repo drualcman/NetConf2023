@@ -1,0 +1,53 @@
+﻿@using System.Reflection;
+@using Microsoft.AspNetCore.Components.WebAssembly.Services;
+@inject LazyAssemblyLoader AssemblyLoader
+<Router AppAssembly="@typeof(App).Assembly"
+        AdditionalAssemblies=LazyLoadedAssemblies
+        OnNavigateAsync=OnNavigateAsync
+>
+    <Found Context="routeData">
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+    </Found>
+    <NotFound>
+        <PageTitle>Not found</PageTitle>
+        <LayoutView Layout="@typeof(MainLayout)">
+            <p role="alert">Sorry, there's nothing at this address.</p>
+        </LayoutView>
+    </NotFound>
+</Router>
+
+
+@code {
+    private List<Assembly> LazyLoadedAssemblies = new();
+    private async Task OnNavigateAsync(NavigationContext args)
+    {
+        try
+        {
+            IEnumerable<Assembly> assemblies = new List<Assembly>();
+            switch(args.Path)
+            {
+                case "virtualize-api":
+                case "virtualize-object":
+                    assemblies = await AssemblyLoader.LoadAssembliesAsync(
+                        new[] {
+                                "Database.Entities.wasm",
+                                "NetConf2023.Shared.wasm" });
+                    break;
+                case "api":
+                case "object":
+                    assemblies = await AssemblyLoader.LoadAssembliesAsync(
+                        new[] {
+                                "Database.Entities.wasm",
+                                "NetConf2023.Shared.wasm",
+                                "NetConf2023.Pagination.wasm" });
+                    break;
+            }
+            LazyLoadedAssemblies.AddRange(assemblies);
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+    }
+}
