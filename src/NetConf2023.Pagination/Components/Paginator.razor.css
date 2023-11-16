@@ -1,0 +1,27 @@
+﻿
+ul, li {
+    list-style: none;
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    padding: 0;
+}
+
+    ul li {
+        flex: 1;
+        margin: 5px;
+        border: 1px solid #000;
+        box-sizing: border-box;
+        border-radius: .25rem;
+    }
+
+        ul li button {
+            width: 100%;
+        }
+
+li {
+    width: 50px;
+}

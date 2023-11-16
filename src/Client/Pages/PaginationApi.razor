@@ -1,0 +1,63 @@
+﻿@page "/api"
+@inject HttpClient Http
+
+<PageTitle>Pagination Api</PageTitle>
+
+<h1>Pagination Api</h1>
+
+<p>This component demostrate how to do a pagination directly from a api.</p>
+
+@if(Data == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="tabla">
+        <div class="head">
+            <div class="first-column">Id</div>
+            <div>Name</div>
+        </div>
+        <div class="body">
+            @foreach(var item in Data)
+            {
+                <div class="data-row">
+                    <div class="data-column first-column">
+                        @item.Id
+                    </div>
+                    <div class="data-column">
+                        @item.CompanyName
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="footer">
+            <Paginator Handler=Paginator OnPageChange=ToPage />
+        </div>
+    </div>
+}
+
+@code {
+    private PaginatorHangler Paginator;
+    IReadOnlyList<Customers> Data;
+    const int Elements = 5;
+
+    protected override void OnInitialized() => Paginator = new(100, Elements);
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(firstRender)
+        {
+            await ToPage(1);
+        }
+    }
+
+    async Task ToPage(int page)
+    {
+        int acualPage = Paginator.ActualPage > 0 ? (Paginator.ActualPage - 1) : 0;
+        Data = await Http.GetFromJsonAsync<List<Customers>>($"data/{acualPage * Elements}/{Elements}");
+        await InvokeAsync(StateHasChanged);
+    }
+}
+
+
