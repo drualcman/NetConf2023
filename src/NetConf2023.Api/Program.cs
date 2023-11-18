@@ -23,15 +23,19 @@ builder.Services.AddCors(options =>
 builder.Services.Configure<DatabaseOptions>(options => builder.Configuration.GetSection(DatabaseOptions.SectionName).Bind(options));
 builder.Services.AddScoped<DataBaseWithADO>();
 builder.Services.AddScoped<LazyAssemblyLoader>();
+builder.Services.AddHttpClient();
 
 builder.Services.AddRazorPages();
 builder.Services.AddSingleton<HttpClient>(sp =>
         {
             // Get the address that the app is currently running at
             var server = sp.GetRequiredService<IServer>();
+            var httpFactory = sp.GetRequiredService<IHttpClientFactory>();
             var addressFeature = server.Features.Get<IServerAddressesFeature>();
             string baseAddress = addressFeature.Addresses.First();
-            return new HttpClient { BaseAddress = new Uri(baseAddress) };
+            var httpclient = httpFactory.CreateClient();
+            httpclient.BaseAddress = new Uri(baseAddress);
+            return httpclient;
         });
 var app = builder.Build();
 

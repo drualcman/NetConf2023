@@ -1,0 +1,17 @@
+﻿@NetConf2023.Api_HostAddress = https://localhost:7044
+
+GET {{NetConf2023.Api_HostAddress}}/all
+
+###
+
+GET {{NetConf2023.Api_HostAddress}}/data/10/5
+
+###
+
+GET {{NetConf2023.Api_HostAddress}}/virtualize/100/10
+
+###
+
+GET {{NetConf2023.Api_HostAddress}}/virtualize-object
+
+###
