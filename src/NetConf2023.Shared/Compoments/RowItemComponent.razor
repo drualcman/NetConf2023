@@ -1,0 +1,12 @@
+﻿<div class="data-row">
+    <div class="data-column first-column">
+        @Item.Id
+    </div>
+    <div class="data-column">
+        @Item.CompanyName
+    </div>
+</div>
+
+@code {
+    [Parameter] public Customers Item { get; set; }
+}

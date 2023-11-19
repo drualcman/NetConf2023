@@ -1,0 +1,28 @@
+﻿<div class="tabla">
+    <div class="head">
+        <div class="first-column">Id</div>
+        <div>Name</div>
+    </div>
+    <div class="body">        
+        @foreach(var item in Data)
+        {
+            <RowItemComponent Item=item />
+        }
+    </div>
+    @if (Paginator is not null)
+    {
+        <div class="footer">
+            <CascadingValue Value=Paginator>
+            <CascadingValue Value=OnPageChange>
+                <Paginator />
+            </CascadingValue>
+        </CascadingValue>
+    </div>
+    }
+</div>
+
+@code {
+    [Parameter] public IEnumerable<Customers> Data { get; set; }
+    [Parameter] public PaginatorHangler Paginator { get; set; }
+    [Parameter] public EventCallback<int> OnPageChange { get; set; }
+}

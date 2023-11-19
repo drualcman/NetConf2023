@@ -12,24 +12,7 @@
 }
 else
 {
-    <div class="tabla">
-        <div class="head">
-            <div class="first-column">Id</div>
-            <div>Name</div>
-        </div>
-        <div class="body scroll">
-            <Virtualize Items=Data Context="item">
-                <div class="data-row">
-                    <div class="data-column first-column">
-                        @item.Id
-                    </div>
-                    <div class="data-column">
-                        @item.CompanyName
-                    </div>
-                </div>
-            </Virtualize>
-        </div>
-    </div>
+    <TableVirtualized Data=Data />
 }
 
 @code {
@@ -37,7 +20,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        Data = await Http.GetFromJsonAsync<List<Customers>>($"virtualize-object");
+        Data = await Http.GetFromJsonAsync<List<Customers>>($"virtual-object");
     }
 }
 

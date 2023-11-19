@@ -13,28 +13,7 @@
 }
 else
 {
-    <div class="tabla">
-        <div class="head">
-            <div class="first-column">Id</div>
-            <div>Name</div>
-        </div>
-        <div class="body">
-            @foreach(var item in Paginator.Items)
-            {
-                <div class="data-row">
-                    <div class="data-column first-column">
-                        @item.Id
-                    </div>
-                    <div class="data-column">
-                        @item.CompanyName
-                    </div>
-                </div>
-            }
-        </div>
-        <div class="footer">
-            <Paginator Handler=Paginator OnPageChange=ToPage />
-        </div>
-    </div>
+    <TableObject Data=Paginator.Items OnPageChange=ToPage Paginator=Paginator />
 }
 
 @code {
@@ -52,6 +31,7 @@ else
 
     async Task ToPage(int page)
     {
+        Console.WriteLine("ejecute");
         await InvokeAsync(StateHasChanged);
     }
 }

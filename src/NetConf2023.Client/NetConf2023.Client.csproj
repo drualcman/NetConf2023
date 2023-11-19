@@ -11,7 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NetConf2023.Pagination\NetConf2023.Pagination.csproj" />
     <ProjectReference Include="..\NetConf2023.Shared\NetConf2023.Shared.csproj" />
   </ItemGroup>
 

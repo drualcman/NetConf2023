@@ -13,7 +13,7 @@
 }
 else
 {
-    <div class="tabla">
+@*     <div class="tabla">
         <div class="head">
             <div class="first-column">Id</div>
             <div>Name</div>
@@ -34,7 +34,9 @@ else
         <div class="footer">
             <Paginator Handler=Paginator OnPageChange=ToPage />
         </div>
-    </div>
+    </div> *@
+
+    <TableObject Data=Data OnPageChange=ToPage Paginator=Paginator />
 }
 
 @code {

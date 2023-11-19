@@ -3,7 +3,7 @@ using Database.ADO.ValueObjects;
 using Microsoft.AspNetCore.Components.WebAssembly.Services;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Hosting.Server.Features;
-using NetConf2023.Shared;
+using NetConf2023.Shared.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,7 +24,6 @@ builder.Services.Configure<DatabaseOptions>(options => builder.Configuration.Get
 builder.Services.AddScoped<DataBaseWithADO>();
 builder.Services.AddScoped<LazyAssemblyLoader>();
 builder.Services.AddHttpClient();
-
 builder.Services.AddRazorPages();
 builder.Services.AddSingleton<HttpClient>(sp =>
         {
@@ -66,12 +65,12 @@ app.MapGet("/data/{page}/{elements}", (DataBaseWithADO database, int page, int e
 .WithName("Data")
 .WithOpenApi();
 
-app.MapGet("/virtualize-object", (DataBaseWithADO database) =>
+app.MapGet("/virtual-object", (DataBaseWithADO database) =>
 {
     List<Customers> list = database.List<Customers>();
     return Results.Ok(list.Skip(101));
 })
-.WithName("Virtualize-object")
+.WithName("Virtual-object")
 .WithOpenApi();
 app.MapGet("/virtualize/{page}/{elements}", (DataBaseWithADO database, int page, int elements) =>
 {

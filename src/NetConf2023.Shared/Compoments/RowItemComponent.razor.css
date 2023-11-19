@@ -1,0 +1,29 @@
+﻿.data-row {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid #c6c6c6;
+}
+
+.data-row:hover {
+    color: chartreuse;
+    background-color: lightgray;
+}
+
+.data-row .data-column {
+    display: inline-block;
+    background-color: transparent;
+    color: black;
+    padding: 1rem 0.5rem;
+    text-align: justify;
+    font-size: 20px;
+    margin: 10px;
+    width: 100%;
+}
+
+    .data-row .data-column.first-column {
+        width: 180px;
+    }
+

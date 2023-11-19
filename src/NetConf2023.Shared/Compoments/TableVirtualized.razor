@@ -1,0 +1,19 @@
+﻿
+<div class="tabla">
+    <div class="head">
+        <div class="first-column">Id</div>
+        <div>Name</div>
+    </div>
+    <div class="body">
+        <Virtualize Items=Data Context="item" ItemsProvider=ItemsProvider>
+            <RowItemComponent Item=@item />
+        </Virtualize>
+    </div>
+</div>
+
+@code {
+    [Parameter] public ICollection<Customers> Data { get; set; }
+    [Parameter] public ItemsProviderDelegate<Customers> ItemsProvider { get; set; } = default;
+
+    
+}

@@ -7,32 +7,7 @@
 
 <p>This component demostrate how to do a infinity scrolling from a api.</p>
 
-
-<div class="tabla">
-    <div class="head">
-        <div class="first-column">Id</div>
-        <div>Name</div>
-    </div>
-    <div class="body scroll">
-        <Virtualize ItemsProvider=LoadData Context="item">
-            <ItemContent>
-                <div @key="@item.Id" class="data-row">
-                    <div class="data-column first-column">
-                        @item.Id
-                    </div>
-                    <div class="data-column">
-                        @item.CompanyName
-                    </div>
-                </div>
-            </ItemContent>
-            <Placeholder>
-                <p>
-                    Loading&hellip;
-                </p>
-            </Placeholder>
-        </Virtualize>
-    </div>
-</div>
+<TableVirtualized ItemsProvider=LoadData />
 
 @code {
     int PageNumber = 0;
@@ -41,8 +16,16 @@
 
     private async ValueTask<ItemsProviderResult<Customers>> LoadData(ItemsProviderRequest request)
     {
-        Customers[] customers = await Http.GetFromJsonAsync<Customers[]>($"virtualize/{request.StartIndex}/{request.Count}", request.CancellationToken);
-        return new ItemsProviderResult<Customers>(customers, 8000);
+        try
+        {
+            Customers[] customers = await Http.GetFromJsonAsync<Customers[]>($"virtualize/{request.StartIndex}/{request.Count}", request.CancellationToken);
+            return new ItemsProviderResult<Customers>(customers, 8000);
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            return new ItemsProviderResult<Customers>(null, 0);
+        }
     }
 }
 

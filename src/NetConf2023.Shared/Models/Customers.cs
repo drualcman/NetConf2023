@@ -1,6 +1,6 @@
 using Database.Entities.Attributes;
 
-namespace NetConf2023.Shared;
+namespace NetConf2023.Shared.Models;
 
 [Database(Name = "vib")]
 public class Customers

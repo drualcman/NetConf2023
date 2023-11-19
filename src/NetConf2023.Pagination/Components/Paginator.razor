@@ -10,11 +10,12 @@
 
 
 @code{
-    [Parameter] public PaginatorHangler Handler { get; set; }
-    [Parameter] public EventCallback<int> OnPageChange { get; set; }
+    [CascadingParameter] public PaginatorHangler Handler { get; set; }
+    [CascadingParameter] public EventCallback<int> OnPageChange { get; set; }
 
     async Task ToPage(int page)
     {
+        Console.WriteLine("Entre");
         Handler.ToPage(page);
         if (OnPageChange.HasDelegate)
             await OnPageChange.InvokeAsync(Handler.ActualPage);
