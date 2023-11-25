@@ -1,0 +1,39 @@
+﻿@page "/table"
+@inject HttpClient Http
+
+<PageTitle>No pagination table</PageTitle>
+
+<h1>No pagination table</h1>
+
+<p>This component demonstrate how slow can be a table without pagination to be rendered by the browser.</p>
+
+@if(Data == null || !Data.Any())
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <TableComponent>
+        <HeadContent>
+            <div class="first-column">Id</div>
+            <div>Name</div>
+        </HeadContent>
+        <BodyContent>
+            @foreach(var item in Data)
+            {
+                <RowItemComponent Item=item />
+            }
+        </BodyContent>
+    </TableComponent>
+}
+
+@code {
+    private IEnumerable<Customers> Data;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Data = await Http.GetFromJsonAsync<List<Customers>>($"full");
+    }
+}
+
+
