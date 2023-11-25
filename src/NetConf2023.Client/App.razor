@@ -27,6 +27,7 @@
             IEnumerable<Assembly> assemblies = new List<Assembly>();
             switch(args.Path)
             {
+                case "table":
                 case "virtualize-api":
                 case "virtualize-object":
                     assemblies = await AssemblyLoader.LoadAssembliesAsync(
