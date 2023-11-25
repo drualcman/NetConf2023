@@ -49,6 +49,14 @@ app.UseCors();
 app.UseHttpsRedirection();
 
 
+app.MapGet("/full", (DataBaseWithADO database) =>
+{
+    List<Customers> list = database.List<Customers>("vibno", 101, 50000);
+    return Results.Ok(list);
+})
+.WithName("full")
+.WithOpenApi();
+
 app.MapGet("/all", (DataBaseWithADO database) =>
 {
     List<Customers> list = database.List<Customers>("vibno", 101, 50);
