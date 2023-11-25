@@ -1,0 +1,9 @@
+Prerender and integrate ASP.NET Core Razor components
+https://learn.microsoft.com/en-us/aspnet/core/blazor/components/prerendering-and-integration?view=aspnetcore-7.0&viewFallbackFrom=aspnetcore-8.0&pivots=webassembly
+
+Lazy load assemblies in ASP.NET Core Blazor WebAssembly
+https://learn.microsoft.com/en-us/aspnet/core/blazor/webassembly-lazy-load-assemblies?view=aspnetcore-8.0
+
+COMO USAR PRERENDER Y LAZY LOADING EN BLAZOR WEBASSEMBLY APP
+https://aprende-a-programar.com/b/Como-usar-prerender-y-lazy-loading-en-Blazor-WebAssembly-App/
+
