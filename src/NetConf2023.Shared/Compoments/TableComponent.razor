@@ -1,0 +1,17 @@
+﻿<div class="tabla">
+    <div class="head">
+        @HeadContent
+    </div>
+    <div class="body">
+        @BodyContent
+    </div>
+    <div class="footer">
+        @FooterContent
+    </div>
+</div>
+
+@code {
+    [Parameter] public RenderFragment HeadContent { get; set; }
+    [Parameter, EditorRequired] public RenderFragment BodyContent { get; set; }
+    [Parameter] public RenderFragment FooterContent { get; set; }
+}

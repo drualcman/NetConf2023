@@ -1,25 +1,25 @@
-﻿<div class="tabla">
-    <div class="head">
+﻿<TableComponent>
+    <HeadContent>
         <div class="first-column">Id</div>
         <div>Name</div>
-    </div>
-    <div class="body">        
+    </HeadContent>
+    <BodyContent>
         @foreach(var item in Data)
         {
             <RowItemComponent Item=item />
         }
-    </div>
-    @if (Paginator is not null)
-    {
-        <div class="footer">
+    </BodyContent>
+    <FooterContent>
+        @if(Paginator is not null)
+        {
             <CascadingValue Value=Paginator>
-            <CascadingValue Value=OnPageChange>
-                <Paginator />
+                <CascadingValue Value=OnPageChange>
+                    <Paginator />
+                </CascadingValue>
             </CascadingValue>
-        </CascadingValue>
-    </div>
-    }
-</div>
+        }
+    </FooterContent>
+</TableComponent>
 
 @code {
     [Parameter] public IEnumerable<Customers> Data { get; set; }

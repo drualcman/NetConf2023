@@ -1,46 +1,12 @@
-﻿.tabla {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #c6c6c6;
+﻿.tabla .head .first-column {
+    width: 180px;
 }
 
-    .tabla .head {
-        position: sticky;
-        top: 0;
-        display: flex;
-        flex-wrap: nowrap;
-        background-color: #f1f1f1;
-        border-bottom: 1px solid #c6c6c6;
+.body {
+    height: 500px;
+    overflow-y: scroll
+}
+
+    .body ::deep .data-row {
+        height: 82.5px;
     }
-
-        .tabla .head > div {
-            padding: 1rem 0;
-            margin: 10px;
-            text-align: center;
-            line-height: 20px;
-            font-size: 30px;
-            width: 100%;
-        }
-
-        .tabla .head .first-column {
-            width: 180px;
-        }
-
-    .tabla .body {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
-            height: 500px;
-            overflow-y: scroll
-    }
-            .tabla .body ::deep .data-row {
-                height: 82.5px;
-            }
-
-
-    .tabla .footer {
-        padding-top: 1rem;
-        background-color: lightgray;
-    }
-
