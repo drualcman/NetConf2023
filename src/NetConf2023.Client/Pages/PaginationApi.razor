@@ -13,34 +13,11 @@
 }
 else
 {
-@*     <div class="tabla">
-        <div class="head">
-            <div class="first-column">Id</div>
-            <div>Name</div>
-        </div>
-        <div class="body">
-            @foreach(var item in Data)
-            {
-                <div class="data-row">
-                    <div class="data-column first-column">
-                        @item.Id
-                    </div>
-                    <div class="data-column">
-                        @item.CompanyName
-                    </div>
-                </div>
-            }
-        </div>
-        <div class="footer">
-            <Paginator Handler=Paginator OnPageChange=ToPage />
-        </div>
-    </div> *@
-
     <TableObject Data=Data OnPageChange=ToPage Paginator=Paginator />
 }
 
 @code {
-    private PaginatorHangler Paginator;
+    private PaginatorHandler Paginator;
     IReadOnlyList<Customers> Data;
     const int Elements = 5;
 

@@ -10,7 +10,7 @@
 
 
 @code{
-    [CascadingParameter] public PaginatorHangler Handler { get; set; }
+    [CascadingParameter] public PaginatorHandler Handler { get; set; }
     [CascadingParameter] public EventCallback<int> OnPageChange { get; set; }
 
     async Task ToPage(int page)

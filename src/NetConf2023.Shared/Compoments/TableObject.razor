@@ -23,6 +23,6 @@
 
 @code {
     [Parameter] public IEnumerable<Customers> Data { get; set; }
-    [Parameter] public PaginatorHangler Paginator { get; set; }
+    [Parameter] public PaginatorHandler Paginator { get; set; }
     [Parameter] public EventCallback<int> OnPageChange { get; set; }
 }

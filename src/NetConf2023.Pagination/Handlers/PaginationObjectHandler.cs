@@ -1,9 +1,9 @@
 ﻿namespace NetConf2023.Pagination.Handlers;
-public class PaginationObjectHangler<TData> : PaginatorHangler
+public class PaginationObjectHandler<TData> : PaginatorHandler
 {
     readonly IReadOnlyList<TData> Data;
 
-    public PaginationObjectHangler(IReadOnlyList<TData> data, int pageSize) : base(data.Count, pageSize) =>
+    public PaginationObjectHandler(IReadOnlyList<TData> data, int pageSize) : base(data.Count, pageSize) =>
         Data = data;
 
     public bool HasItems => Data.Count > 0;

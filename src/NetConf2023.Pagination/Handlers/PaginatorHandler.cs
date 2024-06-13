@@ -1,11 +1,11 @@
 ﻿namespace NetConf2023.Pagination.Handlers;
 
-public class PaginatorHangler
+public class PaginatorHandler
 {
     readonly int TotalElements;
     protected readonly int PageSize;
 
-    public PaginatorHangler(int totalElements, int pageSize)
+    public PaginatorHandler(int totalElements, int pageSize)
     {
         TotalElements = totalElements;
         PageSize = pageSize;
