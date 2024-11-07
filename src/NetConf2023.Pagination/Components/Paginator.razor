@@ -3,7 +3,7 @@
     @for(int i = 1; i <= Handler?.TotalPages; i++)
     {
         int p = i;
-        <li><button @onclick="() => ToPage(p)" class="btn @(Handler?.ActualPage == p ? "btn-primary":"")">@p</button></li>
+        <li><button type="button" @onclick="() => ToPage(p)" class="btn @(Handler?.ActualPage == p ? "btn-primary":"")">@p</button></li>
     }
 </ul>
 
